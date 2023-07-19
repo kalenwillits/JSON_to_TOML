@@ -16,9 +16,9 @@ def main():
         data = json.loads(file.read())
 
     if path.suffix == ".json":
-        path.suffix = ".toml"
-        with open(path, "w+") as file:
-            file.write(toml.dump(data), file)
+        toml_path = Path(str(path).replace(".json", ".toml"))
+        with open(toml_path, "w+") as file:
+            toml.dump(data, file)
             return
     print("Unable to read file...")
 
